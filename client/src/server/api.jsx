@@ -11,15 +11,15 @@ const axios=require('axios');
 
   function getcountrys(){
    return new Promise((resolve)=>{
-      axios.get(`http//localhost:5000/country`)
+      axios.get(`http://localhost:5000/country`)
       .then(response =>resolve(response.data))
       
    })
  }
 
-  function getcitys(){
+  function getcitys(id){
    return new Promise((resolve)=>{
-      axios.get(`http://localhost:5000/cites?countryid=${95}`)
+      axios.get(`http://localhost:5000/cites?countryid=${id}`)
       .then(response =>resolve(response.data));
    })
  }

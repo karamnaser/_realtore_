@@ -10,6 +10,8 @@ import StatusBtn from './status/status_Btn'
 import StatusMenu from './status/status_menue'
 import Gallary from '../gallary/gallary.jsx';
 import {getapartments,getcitys,getcountrys} from '../../server/api.jsx'
+import 'bootstrap-select';
+
 class Form extends React.Component{
 
     constructor(props){
@@ -19,6 +21,7 @@ class Form extends React.Component{
         this.state={
             apartments:[],
             cities: [],
+            countrys:[],
             openfilterlist : false,
             opendmenue: -1 ,
             img_type:this.props.img_type,
@@ -37,6 +40,10 @@ class Form extends React.Component{
 
            })
        }).catch(error=>console.log(error));
+
+       getcountrys().then(countrys=>{
+           this.setState({countrys:countrys},()=>console.log(this.state.countrys))
+       })
 }
 
 
@@ -48,6 +55,7 @@ class Form extends React.Component{
 
    
     getbuttonvalu=(e)=>{
+        
         let query="?";
         let target=e.target;
         let name=target.name
@@ -82,29 +90,27 @@ class Form extends React.Component{
 
                     <div id="form" className="d-flex my-4 container justify-content-center">
 
-                        <div style={{display:"flex",margin:"0 10px",position:"relative"}}>
+                        <div style={{display:"flex",margin:"0 10px",position:"relative"
+                                    ,justifyContent:"space-between",width:"42%"}}>
 
-                            <div>
-
-                                <input id="search-input"
-                                      style={{...input_style,width:"201px",height:"36px"}} 
-                                      type="text"
-                                      onChange={ this.updateSearch }/>
-
-                            </div>
-
-                            <div style={{width:"40px", height:"36px"}}>
-
-                                    <button onClick={()=>this.search()} style={{...style}}>
-
-                                         <img style={{width:"100%",height:"100%"}} 
-                                              src={magglass}/>
-
-                                    </button>
-
-                            </div>
-
-                          </div>
+                            <select name="countryid" onChange={(e)=>{this.getbuttonvalu(e);
+                             getcitys(e.target.value).then(cities=>{
+                                this.setState({cities:cities},()=>console.log(this.state.cities))
+                            })}}>
+                                {this.state.countrys.map((country)=>{
+                                    return(
+                                <option value={country.id}>{country.name}</option>
+                                    )
+                                })}
+                            </select>
+                            <select name="cityid" onChange={(e)=>this.getbuttonvalu(e)}>
+                            {this.state.cities.map((city)=>{
+                                    return(
+                                <option value={city.id}>{city.name}</option>
+                                    )
+                                })}
+                            </select>
+                        </div>
 
 
                     <div>
