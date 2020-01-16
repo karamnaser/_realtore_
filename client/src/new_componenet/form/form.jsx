@@ -34,7 +34,7 @@ class Form extends React.Component{
     componentDidMount(){
        getapartments(window.location.search).then(apartments_arr=>{
            this.setState({apartments:apartments_arr},()=>{
-               console.log("searchparams",window.location.search)
+
            })
        }).catch(error=>console.log(error));
 }

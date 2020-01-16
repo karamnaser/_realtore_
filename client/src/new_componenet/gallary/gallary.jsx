@@ -77,20 +77,19 @@ class Gallary extends React.Component{
         
 
         let iteam_div = this.props.items.map((item,i) => {
-
             return ( 
 
                         <div key={item["id"]} 
                              className="apartments-gallary col-lg-3 col-md-6 col-sm-12 position-relative"
                              apartment-id={i}
                         >
-                            <Link to={this.props.img_type==="apartments" ? "apartment/"+item["id"] : "/"}>
+                            <Link to={`/apartment/${item["apatrmentid"]}`}>
                                 <div style={{boxShadow:"0px 0px 0px 1px"}} className="shadow-div">
                                 
 
                                         <GallarymenDetails header={item[this.props.title]}/>
 
-                                        <GallaryImg src={require(`../`+item[this.props.img_sorce])}/>
+                                        <GallaryImg src={`http://localhost:5000/${item["main_image"]}`}/>
 
                                         {
                                             gallery_got_footer

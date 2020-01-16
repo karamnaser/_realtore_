@@ -20,9 +20,9 @@
 
     .img-wraper{
 
-        top: 24px;
+        top: 0%;
 
-        height: 28%;
+        height: 31%;
 
     }
 }
@@ -36,7 +36,7 @@
 
     .img-wraper{
 
-        height: 31%;
+        height: 32%;
 
     }
 
@@ -84,9 +84,9 @@
 
     .img-wraper{
 
-        height: 48%;
+        height: 49%;
 
-        top:25px;
+        top:0%;
 
     }
 
@@ -136,7 +136,7 @@
 
         height: 48%;
 
-        top: 25px;
+        top: 0%;
 
     }
 
