@@ -1,0 +1,164 @@
+@media(min-width: 300px){
+
+    .apartment .apartment-price {
+        top: 191px;
+        font-size: 19px;
+        left: 12px;
+    }
+
+    .apartment #red-heart{
+
+        right: 1px;
+
+    }
+
+    .apartment{
+
+        width:auto !important;
+
+    }
+
+    .img-wraper{
+
+        top: 24px;
+
+        height: 28%;
+
+    }
+}
+
+@media(min-width: 375px){
+
+    .apartment .apartment-price {
+        top: 220px;
+        
+    }
+
+    .img-wraper{
+
+        height: 31%;
+
+    }
+
+}
+
+@media(min-width: 425px){
+
+
+    .apartment .apartment-price {
+        top: 258px;
+        
+    }
+
+    .img-wraper{
+
+        height: 34%;
+
+    }
+
+
+    .left-arrow{
+
+        top: 17% !important;
+
+    }
+
+    .right-arrow{
+
+        top: 17% !important;
+
+    }
+}
+
+
+
+@media(min-width: 768px){
+
+
+    .apartment .apartment-price {
+        top: 435px;
+
+        font-size: 50px;
+        
+    }
+
+    .img-wraper{
+
+        height: 48%;
+
+        top:25px;
+
+    }
+
+    .apartment #red-heart{
+
+        right: 2px;
+    }
+
+    .left-arrow{
+
+        top: 20% !important;
+
+    }
+
+    .right-arrow{
+
+        top: 20% !important;
+
+    }
+}
+
+@media(min-width: 1024px){
+
+    .apartment .apartment-price {
+        top: 555px;
+        font-size: 80px;
+    }
+
+    .img-wraper{
+
+        height: 52%;
+
+    }
+
+.apartment #red-heart{
+
+    right: 4px;
+
+    top: 3px;
+    
+}
+}
+
+@media(min-width: 1440px){
+
+    .img-wraper{
+
+        height: 48%;
+
+        top: 25px;
+
+    }
+
+    .apartment{
+
+        width: 50% !important;
+
+    }
+  
+
+    .left-arrow{
+
+        top: 23% !important;
+
+    }
+
+    .right-arrow{
+
+        top: 23% !important;
+
+    }
+}
+
+
+    

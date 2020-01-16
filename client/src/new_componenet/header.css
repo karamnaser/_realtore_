@@ -1,0 +1,38 @@
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    border-bottom: 1px solid gray;
+}
+#link-1{
+    border-bottom:2px solid red;
+}
+#link-1 a:hover,#link-2 a:hover,#link-3 a:hover,#link-4 a:hover,#link-5:hover a,#link-6 a:hover,#link-7 a:hover{
+    text-decoration:none;
+    color: red;
+}
+#header-right-side a:hover{
+    color: red;
+    border-bottom:2px solid red;
+    text-decoration: none;
+}
+#header-right-side{
+    width: 24%;
+    display: flex;
+    align-items: center;
+}
+.right-side-links{
+    display: flex;
+    justify-content: space-evenly;
+    width: 75%;
+}
+#header-right-side .header-icon{
+    width: 11%;
+}
+#header-left-side{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
