@@ -1,0 +1,27 @@
+.iphone-hiddin-box{
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    z-index: 999;
+    background: white;
+    right: 21%;
+    width: 27%
+    
+}
+.hiddinbox-img-wraper{
+    width: 20%;
+}
+.iphon-hiddin-box-elemnt{
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+.iphon-hiddin-box-paragraph{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+.iphone-hiddin-box-link:hover{
+    color: red;
+    text-decoration: none;
+}
