@@ -9,6 +9,7 @@ var loginrouter=require('./routes/login');
 var signinrouter = require('./routes/sign_in');
 var countryrouter = require('./routes/country');
 var citierouter = require('./routes/cites');
+var imegesrout=require('./routes/imegs');
 var cors = require('cors');
 
 var app = express();
@@ -27,4 +28,6 @@ app.use('/login',loginrouter);
 app.use('/signin',signinrouter);
 app.use('/country',countryrouter);
 app.use('/cites',citierouter);
+app.use('/imges',imegesrout);
+
 module.exports = app;

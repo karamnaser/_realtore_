@@ -10,7 +10,8 @@ const date = new Date();
 /* GET users listing. */
 router.get('/', function (req, res, next) {
     let searchbuilder = new SearchBuilder(1, 10)
-    connector.query(searchbuilder.cityId(req.query.cityid)
+    connector.query(searchbuilder.id(req.query.id)
+        .cityId(req.query.cityid)
         .country(req.query.countryid)
         .roomnumber(req.query.roomnumber)
         .salestate(req.query.salestatuse)

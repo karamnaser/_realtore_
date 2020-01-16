@@ -2,10 +2,14 @@
 
 class SearchBuilder{
     constructor(page=1,size=10){
-        this.query="select * from apartments p join cities c on p.city_id=c.id where 1 "
+        this.query="SELECT * , p.id as apatrmentid FROM realtor.apartments p join cities c on p.city_id=c.id where 1 "
         this.params=[];
         this.page=page;
         this.size=size
+    }
+    id(id){
+        this.query+=`${!id ? '' : (this.params.push(id) ,' and p.id = ? ')}`
+        return this
     }
     cityId(cityid){
         this.query+=`${!cityid ? '' : (this.params.push(cityid) ,' and p.city_id = ? ')}`
