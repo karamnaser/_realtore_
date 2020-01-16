@@ -6,6 +6,7 @@ import './apartment.css'
 import rightarrowicon from '../../icons/right-arrow.png'
 import leftarrowicon from '../../icons/left-arrow.png'
 import '../form/serachpagemobile.css'
+import {getapartments,getApartmentImgs} from '../../server/api'
 
  class SinglePageApartment extends React.Component{
     constructor(props){
@@ -15,43 +16,26 @@ import '../form/serachpagemobile.css'
     const pathway=window.location.pathname
 
     this.state={
-
-    apartments: [] ,
-
-    id : parseInt(pathway.slice(pathway.length-1))-1,
-
+    apartment: [] ,
+    imeges:[],
+    id : this.props.match.params.id,
     index : 0 ,
-
     target : document.getElementsByClassName("apartments-imges")
-
     }
   }
 
 
   componentDidMount(){
-
-    fetch(`https://storage.googleapis.com/realtour/apartments-rt.json`, {
-      method: 'GET',
-}
-
-).then(response => response.json()
-
-).then(success => {
-
-    this.setState({
-
-        apartments : success
-
-        
-
-}, ()=>console.log(this.state.apartments[this.state.id+1]["address"]))
-
-}
-
-).catch(error => console.log(error))
-
-
-};
+    getapartments(`?id=${this.state.id}`)
+    .then(apartment=>{
+      console.log(apartment)
+      this.setState({apartment:apartment},()=>console.log(this.state.apartment))
+    })
+    getApartmentImgs(this.state.id)
+    .then(imegs=>{
+      this.setState({imeges:imegs},()=>console.log(this.state.imeges))
+    })
+  }
 
 
 display_heart_on_hover(event) {
@@ -115,34 +99,34 @@ getapartmentDiscreption(aprtment){
         
         <div  className="apartment  position-relative w-50">
 
-              {this.state.apartments.length>0 ?
+              {this.state.apartment.length>0 ?
 
               <div style={{boxShadow:"0px 0px 0px 1px"}} className="shadow-div">
 
-                    <GallarymenDetails header={this.state.apartments[this.state.id]["title"]}/>
+                    {/* <GallarymenDetails header={this.state.apartmen["title"]}/> */}
 
-                    <GallaryImg src={require("../apartments/"+this.state.apartments[this.state.id]["main_image"])}/>
+                    <GallaryImg src={`http://localhost:5000/${this.state.apartment[0]["main_image"]}`}/>
 
                         
-                   <GallarymenDetails header={this.getapartmentDiscreption(this.state.apartments[this.state.id])}/>
+                   <GallarymenDetails header={this.getapartmentDiscreption(this.state.apartment[0])}/>
 
 
                    <Heart onMouseOver={this.display_heart_on_hover.bind(this)}
                           onMouseLeave={this.disaple_heart_on_leave.bind(this)}/>
 
 
-                    <p className="apartment-price">{this.state.apartments[this.state.id]["price"] &&"$"+this.state.apartments[this.state.id]["price"]}</p>
+                    <p className="apartment-price">{this.state.apartment["price"] &&"$"+this.state.apartment["price"]}</p>
 
 
                     
-                    {this.state.apartments[this.state.id]["images"].map((iteam,i)=>{
-
+                    {this.state.imeges.map((iteam,i)=>{
+                        console.log(iteam)
                         return(
 
                                  <div className="img-wraper position-absolute">
                                 
 
-                                        <img className="apartments-imges" src={require("../apartments/"+iteam)}/>
+                                        <img className="apartments-imges" src={`http://localhost:5000/${iteam["url"]}`}/>
 
             
                                 </div>
@@ -154,7 +138,7 @@ getapartmentDiscreption(aprtment){
                             }
                             <div id="map-container-google-1" class="z-depth-1-half map-container" style={{height: "500px"}}>
                 
-                                  <iframe src={`https://maps.google.com/maps?q=${this.state.apartments[this.state.id]["address"]}&t=&z=13&ie=UTF8&iwloc=&output=embed`} frameborder="0"
+                                  <iframe src={`https://maps.google.com/maps?q=${this.state.apartment["address"]}&t=&z=13&ie=UTF8&iwloc=&output=embed`} frameborder="0"
                                           style={{border:"0px"}} allowfullscreen></iframe>
                         
                             </div>
