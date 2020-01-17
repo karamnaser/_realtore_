@@ -12,14 +12,15 @@ let salt='realtore';
 
 
 router.post('/', function(req, res, next) {
+  console.log(req.body)
   req.body.password= crypto.pbkdf2(req.body.password,salt,i,len,digest,(error,key)=>{
     if(error) throw error;
-    connector.query('update users set password = ? and email= ?'
-    ,[key.toString('hex'),req.body.email],
+    connector.query(`insert into users(role_id,first_name,last_name,password,email) 
+    values(?,?,?,?,?)`
+    ,[2,req.body.name,req.body.lastname,key.toString('hex'),req.body.email],
     (error,result,field)=>{
         if(error) throw error;
-        res.send("sucssefully updtaed");
-        res.end();
+        res.status(200).json({msg:"sucssefully updtaed"});
     })
   })
  
