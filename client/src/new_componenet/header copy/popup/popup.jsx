@@ -1,9 +1,38 @@
 import React from 'react'
 import x from '../../../images/x.png'
 import './popup.css'
-
+import {sendData} from '../../../server/api'
+import validate,{field} from '../../../validation/validation'
 class PopUp extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            email: field({name: 'email', isRequired: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}),
+            password:field({name: 'password', isRequired:true, minLength: 4}),
+            username:field({name: 'username', isRequired:true, minLength: 2}),
+            userlastname:field({name: 'userlastname', isRequired:true, minLength: 2}),
+            msg:""
+        }
+    }
 
+    handleData=(e)=>{
+        let target = e.target;
+        let value=target.value;
+        let name=target.name;
+        this.setState({[name]:{...this.state[name],value}})
+    }
+
+    inputChange=({target: {name, value}})=>{
+        const errors = validate(name, value, this.state[name].validations);
+
+        this.setState({
+            [name]: {
+                ...this.state[name],
+                value,
+                errors
+            }
+        },()=>console.log(this.state[name]));
+    }
 
         render(){
 
@@ -38,9 +67,15 @@ class PopUp extends React.Component{
 
                     <div style={textDiv}>
 
-                        <input style={text__inpute_style} type="text" placeholder="email"/>
+                        <input name="email" onSelect={(e)=>{
+                            this.handleData(e);
+                        
+                        }}
+                       
+                               style={text__inpute_style} type="text" placeholder="email"/>
 
-                        <input style={text__inpute_style} type="text" placeholder="password"/>
+                        <input name="password" onSelect={(e)=>this.handleData(e)}  
+                               style={text__inpute_style} type="text" placeholder="password"/>
 
                     </div>
 
@@ -54,7 +89,9 @@ class PopUp extends React.Component{
 
                         <div style={log_in_div_style}>
 
-                            <button style={logon_style}>log in</button>
+                            <button onClick={()=>sendData("login",{email:this.state.email.value,password:this.state.password.value})
+                                                .then(msg=>msg.msg ? alert(msg.msg) : alert(msg))}
+                                    style={logon_style}>log in</button>
 
                             <button style={{border:"none",background:"white"}}> No account? Sign Up</button>
 
@@ -73,19 +110,71 @@ class PopUp extends React.Component{
                     </div>
 
                     <div>
+                        <h1>sign up</h1>
+                    </div>
+                    <div style={textDiv}>
 
-                        <h1>Log in to your account</h1>
+                    <input name="username" onSelect={(e)=>this.handleData(e)}
+                           onBlur={(e)=>this.inputChange(e)}             
+                           style={text__inpute_style} type="text" placeholder="name"/>
+                           
+                    { this.state.username.errors.map((error, i) => (
 
-                        <p>Access all your saved properties, searches, notes and more</p>
+                        <small key={i} className="form-text text-danger">
+
+                            {error}
+                        </small>
+                    ))}
+
+                        <input name="userlastname" onSelect={(e)=>this.handleData(e)} 
+                               onBlur={(e)=>this.inputChange(e)}
+                               style={text__inpute_style} type="text" placeholder="lastname"/> 
+
+                        { this.state.userlastname.errors.map((error, i) => (
+
+                            <small key={i} className="form-text text-danger">
+
+                                {error}
+
+                            </small>
+                        ))}  
+
+                        <input name="email" onSelect={(e)=>this.handleData(e)} 
+                               onBlur={(e)=>this.inputChange(e)}
+                               style={text__inpute_style} type="text" placeholder="email"/>
+
+                        { this.state.email.errors.map((error, i) => (
+
+                            <small key={i} className="form-text text-danger">
+
+                                {error}
+                            </small>
+                        ))}
+
+                        <input name="password" onSelect={(e)=>this.handleData(e)} 
+                               onBlur={(e)=>this.inputChange(e)}
+                               style={text__inpute_style} type="text" placeholder="password"/>
+
+                        { this.state.password.errors.map((error, i) => (
+
+                            <small key={i} className="form-text text-danger">
+
+                                {error}
+                            </small>
+                        ))}    
 
                     </div>
-
-
+                    
                     <div>
 
                         <div style={popup_footer_style}>
 
-                            <button style={{...logon_style,background:"blue"}}>Pro-log in</button>   
+                            <button onClick={()=>sendData("signin",{name:this.state.username.value,
+                                                                    lastname:this.state.userlastname.value,
+                                                                    email:this.state.email.value,
+                                                                    password:this.state.password.value})
+                                                                   .then(msg=>alert(msg.msg))} 
+                                    style={{...logon_style,background:"blue"}}>Sign-Up</button>   
 
                         </div>
 

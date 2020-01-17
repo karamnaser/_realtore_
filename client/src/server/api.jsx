@@ -30,4 +30,12 @@ function getApartmentImgs(apartmentid){
     .then(response =>resolve(response.data));
  })
 }
-export {getapartments,getcountrys,getcitys,getApartmentImgs}
+
+function sendData(rout_name,data){   
+   return new Promise((resolve)=>{
+      axios.post(`http://localhost:5000/${rout_name}`,{...data})
+      .then(response =>resolve(response.data));
+   }).catch(error=>error)
+}
+
+export {getapartments,getcountrys,getcitys,getApartmentImgs,sendData}
