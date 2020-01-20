@@ -98,7 +98,7 @@ import '../header.css'
 
                     <div className="d-lg-block d-none" id="header-right-side">
 
-                            <HeaderRightside showpopup={this.openPopup} leftsidearr={[["log-in/sign-up","/"]]}/>
+                            <HeaderRightside showpopup={this.openPopup} leftsidearr={[["log-in/sign-up","/"],["logout","/"]]}/>
 
                     </div>
 

@@ -3,6 +3,8 @@ import '../../header.css';
 import  HeaderIcon from '../header-icon';
 import IphoneHiddinBox from './iphone_hiddin_box';
 import iphonicon from '../../../icons/iphon.png';
+import Cookies from 'js-cookie';
+
 class HeaderRightside extends React.Component{
 
     constructor(props){
@@ -35,7 +37,14 @@ class HeaderRightside extends React.Component{
 
                 <div>
 
-                    <a onClick={()=>this.props.showpopup()}>{iteam[0]}</a>
+                    <a onClick={()=>{if(iteam[0]=="log-in/sign-up"){ 
+                        this.props.showpopup();
+                    }
+                    else if(iteam[0]=="logout"){
+                        Cookies.remove("auth");
+                        window.location.reload();
+                    }
+                }}>{iteam[0]}</a>
 
                 </div>
 
