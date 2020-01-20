@@ -23,6 +23,10 @@ class SearchBuilder{
         this.query+=`${!avilabilty ? '' : (this.params.push(avilabilty) ,' and p.availability = ? ')}`
         return this
     }
+    status(status){
+        this.query+=`${!status ? '' : (this.params.push(status) ,' and p.status = ? ')}`
+        return this
+    }
     salestate(salestate){
         this.query+=`${!salestate ? '' : (this.params.push(salestate) ,' and p.sale_status = ? ')}`
         return this
