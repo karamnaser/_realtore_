@@ -90,10 +90,11 @@ class PopUp extends React.Component{
                         <div style={log_in_div_style}>
 
                             <button onClick={()=>sendData("login",{email:this.state.email.value,password:this.state.password.value})
-                                                .then(msg=>msg.msg ? alert(msg.msg) : alert(msg))}
+                                                .then(response=>{response.msg ? alert(response.msg) : alert(response);
+                                                localStorage.setItem("cookie",response.userid)})}
                                     style={logon_style}>log in</button>
 
-                            <button style={{border:"none",background:"white"}}> No account? Sign Up</button>
+                           
 
                         </div>
 
@@ -204,7 +205,7 @@ const popupWrapper = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 1000,
+    zIndex: 100000,
     padding: '20px'
 }
 
