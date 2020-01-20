@@ -1,6 +1,7 @@
 
 const authorizeAdmin = (req, res, next) => {
-    if(req.cookies.auth.role=="admin"){
+    console.log("put request",req.cookies.auth)
+    if(req.cookies.auth && req.cookies.auth.role=="admin"){
         req.isAdmin = true;
         next();
     }else{

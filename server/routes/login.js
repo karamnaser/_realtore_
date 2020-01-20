@@ -4,6 +4,7 @@ var router = express.Router();
 const connector = require('../api/configeration');
 
 var cors = require('cors');
+var localstoreg = require('node-localstorage');
 
 /* GET users listing. */
 router.post('/',function (req, res, next) {
@@ -17,7 +18,7 @@ router.post('/',function (req, res, next) {
         res.cookie("auth",{ userid: user.id, name: `${user.first_name}`, role: user.type,
         city:user.city_id}
         );
-        res.status(200).json({ msg: `Welcome ${user.first_name}, you have succsefuly connected`});
+        res.status(200).send({userid:user.id,role: user.type,msg: `Welcome ${user.first_name}, you have succsefuly connected`});
       }
      
       else {
