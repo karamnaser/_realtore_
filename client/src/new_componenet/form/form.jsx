@@ -9,6 +9,7 @@ import BathMenu  from './bath/bath_menu'
 import StatusBtn from './status/status_Btn'
 import StatusMenu from './status/status_menue'
 import Gallary from '../gallary/gallary.jsx';
+import NumberBar from '../numberbar/numbersbar.jsx'
 import {getapartments,getcitys,getcountrys} from '../../server/api.jsx'
 import 'bootstrap-select';
 
@@ -42,7 +43,7 @@ class Form extends React.Component{
        }).catch(error=>console.log(error));
 
        getcountrys().then(countrys=>{
-           this.setState({countrys:countrys},()=>console.log(this.state.countrys))
+           this.setState({countrys:countrys})
        })
 }
 
@@ -234,7 +235,7 @@ class Form extends React.Component{
                      title={this.props.title}  
                      gotfooter={this.props.bool}/>
 
-
+            <NumberBar handledata={this.getbuttonvalu} apartmentquqntity={this.state.apartments.length}/>
             </div>
         )
     }
