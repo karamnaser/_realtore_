@@ -5,6 +5,8 @@ import Form from './new_componenet/form/form'
 import './App.css';
 import HomePage  from './new_componenet/homePage/homepage'
 import HeaderNave from './new_componenet/header copy/header-navigation';
+import AdminPage from './new_componenet/AdminPage/adminpage';
+import AddApartmentPage from './new_componenet/addapartmentpage/addapartmentpage'
 import  { BrowserRouter as Router
   ,Switch
   ,Route
@@ -24,16 +26,8 @@ function App() {
 
 
           <Route path={"/apartment/:id"} component={SinglePageApartment}/>
-            
-    
-      
-          <Route path="/sell" component={()=><Form img_type="apartments" img_sorce="main_image" title={"title"} 
-                                                   bool={true} gallarydata={"apartments"}/>}>
-            
-          </Route>
-          
 
-        <Route path="/apartments" component={()=><Form
+          <Route path="/apartments" component={()=><Form
                   img_type="apartments"
                   img_sorce="main_image"
                   main_image={"main_image"}
@@ -42,17 +36,10 @@ function App() {
                   gallarydata={"apartments"}
                   />}>
   
-        </Route>
+          </Route>
 
-         <Route path="/city" component={()=><Form
-                  img_type="cities"
-                  img_sorce="image"
-                  title={"label"}
-                  bool={false}
-                  gallarydata={"cities"}/>}>
-
-        </Route>
-        
+          <Route path={`/addapartment`} component={AddApartmentPage}/>
+          <Route path={`/AdminPage`} component={AdminPage}/>
         <Route path="/" component={HomePage}/>
     </Switch>
     </div>
