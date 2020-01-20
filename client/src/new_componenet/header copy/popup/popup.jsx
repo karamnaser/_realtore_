@@ -91,7 +91,7 @@ class PopUp extends React.Component{
 
                             <button onClick={()=>sendData("login",{email:this.state.email.value,password:this.state.password.value})
                                                 .then(response=>{response.msg ? alert(response.msg) : alert(response);
-                                                localStorage.setItem("cookie",response.userid)})}
+                                                window.location.reload();})}
                                     style={logon_style}>log in</button>
 
                            
