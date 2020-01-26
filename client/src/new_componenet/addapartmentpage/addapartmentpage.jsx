@@ -6,10 +6,13 @@ import Cookies from 'js-cookie';
 import {sendData,getcitys,getcountrys} from '../../server/api';
 import roomicon from '../../icons/door.png';
 import bathicon from '../../icons/bath.png';
+import dollar from '../../icons/dollar.png'
 import lenghticon from '../../icons/length.png';
 import upload from '../../icons/upload.png'
 import  '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import LogInPage from '../loginpage/login';
+import '../addapartmentpage/addadminmobilecss.css'
+
 
 class AddApartmentPage extends React.Component{
     constructor(props){
@@ -29,10 +32,9 @@ class AddApartmentPage extends React.Component{
         sale_status:field({name: 'sale_status', isRequired:true}),
         propertytype:field({name: 'propertytype', isRequired:true}),
         img:field({name: 'img', isRequired:false}),
-        isLogin:false
+        isLogin:false,
+        data:new FormData()
     }
-
-    
 }
 
 componentDidMount(){
@@ -50,31 +52,18 @@ inputChange=({target: {name, value}})=>{
             value,
             errors
         }
-    },()=>console.log(this.state));
+    },()=>console.log(this.state.data.get(name)))
 }
 
-onSubmit = async e => {
+onSubmit =  e => {
     e.preventDefault();
-    try{
-        await sendData("apartments",{
-            userid:this.state.userid,
-            city:this.state.cityid.value,
-            address:this.state.address.value,
-            price:this.state.price.value,
-            numberofrooms:this.state.numberofroom.value,
-            numberofbaths:this.state.numberofbath.value,
-            sqft:this.state.sqft.value,
-            description:this.state.discription.value,
-            salestatus:this.state.sale_status.value,
-            propertytype:this.state.propertytype.value,
-            img:this.state.img.value,
-            avilabilty:"available"
-        }).then(response=>alert(response.msg));
-    }catch(error){
-        alert(error.msg);
-    }
-    
+        this.state.data.set("userid",this.state.userid);
+        console.log(this.state.data)
+         sendData("apartments",this.state.data)
+         .then(response=>alert(response))
+         .catch(err=>alert(new Error("cant save data data misssing")))
 }
+
 showApartment = () =>{
     let cookie =Cookies.get("auth") ? Cookies.get("auth").split("j:"):"";
     this.setState({userid:cookie ? JSON.parse(cookie[1])["userid"]:0});
@@ -82,72 +71,88 @@ showApartment = () =>{
 
 render(){
     return(
-    <>
+    <section style={section_style}>
     { this.state.userid && this.state.userid!=0 ? 
-    <form onSubmit={this.onSubmit} 
-    className="row" style={{width: "60%",margin: "auto"}}>
-
-        <div className="col-6">
+    <form action="/profile" method="post"  onSubmit={this.onSubmit} enctype="multipart/form-data"
+    className="row" style={form_style}>
+        <div className="col-12 mt-5">
+        <p className="title" style={{color: "#33ccff",fontSize:"50px"}}>Add Apartment</p>
+        </div>
+        <div className="col-md-6 col-sm-12 mt-5">
+            <div>
             <p>price</p>
-            <button>$</button>
-            <input onBlur={(e)=>this.inputChange(e)} 
-                   type="number" name="price"/>
+            </div>
+            <div>
+                <img className="icons" src={dollar}/>
+                <input className="input" style={inpute_style} onBlur={(e)=>{this.inputChange(e);this.state.data.set(e.target.name,e.target.value)}} 
+                        type="number" name="price"/>
+            </div>
         </div>
-        <div className="col-6">
+
+        <div className="col-md-6 col-sm-12 mt-5">
+            <div>
             <p>numberofrooms</p>
-            <img src={roomicon}/>
-            <input onBlur={(e)=>this.inputChange(e)} 
-                   type="number" name="numberofroom"/>
+            </div>
+            <div>
+                <img className="icons" src={roomicon}/>
+                <input className="input" style={inpute_style} onBlur={(e)=>{this.inputChange(e);this.state.data.set(e.target.name,e.target.value)}} 
+                        type="number" name="numberofroom"/>
+            </div>
         </div>
-        <div className="col-6">
-            <p>numberofpath</p>
-            <img src={bathicon}/>
-            <input onBlur={(e)=>this.inputChange(e)} 
-                   type="number" name="numberofbath"/>
+        <div className="col-md-6 col-sm-12 mt-5">
+            <div>
+            <p>numberofbath</p>
+            </div>
+            <div>
+                <img className="icons" src={bathicon}/>
+                <input className="input" style={inpute_style} onBlur={(e)=>{this.inputChange(e);this.state.data.set(e.target.name,e.target.value)}} 
+                       type="number" name="numberofbath"/>
+            </div>
         </div>
-        <div className="col-6">
+        <div className="col-md-6 col-sm-12 sm-col-12 mt-5">
             <p>sqft</p>
-            <img src={lenghticon}/>
-            <input onBlur={(e)=>this.inputChange(e)} 
+            <img className="icons" src={lenghticon}/>
+            <input className="input"  style={inpute_style} onBlur={(e)=>{this.inputChange(e);this.state.data.set(e.target.name,e.target.value)}} 
                    type="number" name="sqft"/>
         </div>
-        <div className="col-6 mb-5">
+        <div className="col-md-6 col-sm-12 mt-5">
             <p>address</p>
-            <textarea onBlur={(e)=>this.inputChange(e)}
+            <textarea className="input"  onBlur={(e)=>{this.inputChange(e);this.state.data.set(e.target.name,e.target.value)}}
                       name="address" placeholder="street,number,city,zip"/>
         </div>
-        <div className="col-6 mb-5">
+        <div className="col-md-6 col-sm-12 mt-5">
             <p>description</p>
-            <textarea onBlur={(e)=>this.inputChange(e)} 
+            <textarea className="input"  onBlur={(e)=>{this.inputChange(e);this.state.data.set(e.target.name,e.target.value)}} 
                       name="discription" placeholder="description"/>
         </div>
-        <div className="col-6 mb-5">
+        <div className="col-md-6 col-sm-12 mt-5">
             <p>property for</p>
-            <select onChange={(e)=>this.inputChange(e)} name="sale_status">
-            <option selected="selected"></option>
+            <select className="input"  onChange={(e)=>{this.inputChange(e);this.state.data.set(e.target.name,e.target.value)}} name="sale_status">
+            <option style={inpute_style} selected="selected">select property for</option>
                 <option value="both">both</option>
                 <option value="rent">rent</option>
                 <option value="sale" >sale</option>
             </select>
         </div>
-        <div className="col-6">
+        <div className="col-md-6 col-sm-12 mt-5">
             <p>type of property</p>
-            <select onChange={(e)=>this.inputChange(e)} name="propertytype">
-            <option selected="selected"></option>
+            <select className="input"  style={inpute_style} onChange={(e)=>{this.inputChange(e);this.state.data.set(e.target.name,e.target.value)}} name="propertytype">
+            <option selected="selected">type of property</option>
                 <option value="condo">condo</option>
                 <option value="house"> house</option>
             </select>
         </div>
-        <div className="col-6">
+        <div className="col-md-6 col-sm-12 mt-5">
             <p>choos country</p>
-            <select onChange={
+            <select className="input"  style={inpute_style} onChange={
                 (e)=>{
                       getcitys(e.target.value)
                       .then(citys=>{
                           this.setState({citys:citys})
-                      })                   
+                      })
+                      this.state.data.set(e.target.name,e.target.value);                   
                 }} name="country">
-                    <option selected="selected"></option>
+                    <option selected="selected">choose country</option>
                 {this.state.countrys.map((country)=>{
                     return(
                 <option value={country.id}>{country.name}</option>
@@ -157,10 +162,10 @@ render(){
                
             </select>
         </div>
-        <div className="col-6">
+        <div className="col-md-6 col-sm-12 mt-5">
             <p>choose city</p>
-            <select  onChange={(e)=>this.inputChange(e)} name="cityid">
-                <option selected="selected"></option>
+            <select className="input"  style={inpute_style} onChange={(e)=>{this.inputChange(e);this.state.data.set(e.target.name,e.target.value)}} name="cityid">
+                <option selected="selected">choose city</option>
                 {this.state.citys.map(city=>{
                     return(
                     <option value={city.id}>{city.name}</option>
@@ -169,19 +174,48 @@ render(){
                
             </select>
         </div>
-        <div className="col-6">
-            <p>upload img</p>
+        <div className="col-md-7 col-sm-12 mt-5">
             <img src={upload}/>
-            <input onBlur={(e)=>this.inputChange(e)}  
-                   type="text" name="img"/>
+            <input className="input uploadinput"  id="file-id" onChange={(e)=>{
+                this.inputChange(e);
+                this.state.data.set(e.target.name,e.target.files[0])
+                }
+            }
+                   type="file" name="img" />
         </div>
-        <div className="col-12">
-            <input type="submit"/>
+        <div className="col-12 mt-5 d-flex justify-content-center">
+            <input type="submit" className="btn btn-light"/>
         </div>
     </form>
 :<LogInPage showaddpage={this.showApartment}/>}
-    </>
+    </section>
     )
 }
 }
 export default AddApartmentPage
+
+let section_style={
+    backgroundImage:"linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)"
+}
+
+let form_style={width: "50%",
+                margin: "auto",
+                backgroundImage: "linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)"
+            }
+let uploadparagraph_sytle={
+    textAlign:"center",
+    width:"85%"
+}
+let inpute_style={
+    borderRadius:"7px",
+    border:"1px solid",
+    background:"white"
+}
+
+let buton_style={
+    border:"1px solid",
+    background:"white",
+    borderTopLeftRadius: "7px",
+    borderBottomLeftRadius:"7px",
+    backgroundImage:"linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%)"
+}

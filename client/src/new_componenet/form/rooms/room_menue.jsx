@@ -53,9 +53,8 @@ class RoomMenu extends React.Component{
 
             
             <div style={{width:"263px",height:"444px",position:"absolute",
-                         zIndex:"10000",background:"white"
-                         ,top:"85%",left:"1%"}}
-                 className="shadow-sm">
+                         zIndex:"10000",background:"white"}}
+                 className="roommenu shadow-sm">
 
 
       <div style={{background:"gray"}} className="col-12 d-flex justify-content-between">

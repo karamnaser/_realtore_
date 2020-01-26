@@ -1,3 +1,52 @@
+.shadow-div {
+    width: 100%;
+    height: 90%;
+    color: black;
+   
+}
+
+.apartments-gallary a{
+
+    text-decoration: none;
+
+}
+
+.Gallary-img {
+    width: 100%;
+    height: 76%;
+}
+
+.Gallary-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.header-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.header-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.heart-img {
+    top: 29px;
+    right: 25px;
+    width: 10%;
+}
+
+.heart-img img {
+    width: 100%;
+}
+
+#red-heart {
+    right: 2px;
+    top: 2px;
+    width: 92%;
+    opacity: 0;
+}
 .apartments-price {
     position: absolute;
     position: absolute;
@@ -12,7 +61,7 @@
 
  .apartments-price {
 
-        bottom: 70px;
+        bottom: 47px;
         
         
     }
@@ -25,11 +74,11 @@
    }
 }
 
-@media(min-width: 400px){
+@media(min-width: 480px){
 
     .apartments-price {
    
-           bottom: 99px;
+           bottom: 61px;
            
            
        }
@@ -45,7 +94,7 @@
 
     .apartments-price {
    
-           bottom: 120px;
+           bottom: 80px;
            
            
        }
@@ -61,8 +110,8 @@
 
     .apartments-price {
    
-           bottom: 68px;
-           
+           bottom: 45px;
+           font-size: 24px;
            
        }
 
@@ -84,12 +133,21 @@
 
    @media(min-width: 1024px){
 
-    .apartments-price {
+    .row{
+        margin-top: 12px;
+    }
+    .shadow-div{
+        margin-bottom: 31px;
+        height: 90%;
+    }
+    
+
+    /* .apartments-price {
    
            bottom: 52px;
            
            
-       }
+       } */
 
        .homepagegallary .apartments-price{
 

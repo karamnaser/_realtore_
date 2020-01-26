@@ -1,5 +1,4 @@
 import React from 'react';
-import magglass from '../../icons/magglass.png'
 import Price_btn from './price_btn/price_btn';
 import PriceMenue from './price_btn/price_menue'
 import RoomBtn from './rooms/room_btn'
@@ -10,9 +9,8 @@ import StatusBtn from './status/status_Btn'
 import StatusMenu from './status/status_menue'
 import Gallary from '../gallary/gallary.jsx';
 import NumberBar from '../numberbar/numbersbar.jsx'
-import {getapartments,getcitys,getcountrys} from '../../server/api.jsx'
-import 'bootstrap-select';
-
+import {getapartments,getcitys,getcountrys,getapartmentnumbers} from '../../server/api.jsx'
+import './formsearchmobilecss.css'
 class Form extends React.Component{
 
     constructor(props){
@@ -21,6 +19,7 @@ class Form extends React.Component{
 
         this.state={
             apartments:[],
+            apartmentsnumber:0,
             cities: [],
             countrys:[],
             openfilterlist : false,
@@ -45,6 +44,9 @@ class Form extends React.Component{
        getcountrys().then(countrys=>{
            this.setState({countrys:countrys})
        })
+       getapartmentnumbers().then(apartmentsnumber=>{
+           this.setState({apartmentsnumber:apartmentsnumber})
+       })
 }
 
 
@@ -57,7 +59,7 @@ class Form extends React.Component{
    
     getbuttonvalu=(e)=>{
         
-        let query="?";
+        let query="";
         let target=e.target;
         let name=target.name
         let value=target.value
@@ -81,30 +83,32 @@ class Form extends React.Component{
     
     render(){
         return(
-             <div>
+             <div  style={{backgroundImage:"linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)"}}>
 
               {
                 this.props.img_type=="apartments" 
 
                       &&
                   
+                    
+                    <div id="form" className="d-flex p-5 container justify-content-center">
 
-                    <div id="form" className="d-flex my-4 container justify-content-center">
-
-                        <div style={{display:"flex",margin:"0 10px",position:"relative"
+                        <div className="country_city_search d-none d-lg-flex" style={{display:"flex",margin:"0 10px",position:"relative"
                                     ,justifyContent:"space-between",width:"42%"}}>
 
-                            <select name="countryid" onChange={(e)=>{this.getbuttonvalu(e);
+                            <select style={{width:"40%"}} name="countryid" onChange={(e)=>{this.getbuttonvalu(e);
                              getcitys(e.target.value).then(cities=>{
                                 this.setState({cities:cities},()=>console.log(this.state.cities))
                             })}}>
+                                <option selected="selected">choos country</option>
                                 {this.state.countrys.map((country)=>{
                                     return(
                                 <option value={country.id}>{country.name}</option>
                                     )
                                 })}
                             </select>
-                            <select name="cityid" onChange={(e)=>this.getbuttonvalu(e)}>
+                            <select style={{width:"40%"}} name="cityid" onChange={(e)=>this.getbuttonvalu(e)}>
+                                <option selected="selected">choos city</option>
                             {this.state.cities.map((city)=>{
                                     return(
                                 <option value={city.id}>{city.name}</option>
@@ -132,17 +136,29 @@ class Form extends React.Component{
 
                             &&
 
-                        <div className="filter_list" 
-                             style={{padding: "35px 0px",
-                                     display:"flex",
-                                     justifyContent:"space-evenly",
-                                     position:"absolute",
-                                     zIndex:"999",
-                                     background:"white",
-                                     left:"0px",
-                                     top:"220px",                            
-                                     width:"107vw"}}>
-                    
+                        <div className="filter_list d-lg-none">
+                            <div className="country_city_search mt-2">
+                            <select style={{width:"40%",marginRight:"10px"}} name="countryid" onChange={(e)=>{this.getbuttonvalu(e);
+                             getcitys(e.target.value).then(cities=>{
+                                this.setState({cities:cities},()=>console.log(this.state.cities))
+                            })}}>
+                                <option selected="selected">choos country</option>
+                                {this.state.countrys.map((country)=>{
+                                    return(
+                                <option value={country.id}>{country.name}</option>
+                                    )
+                                })}
+                            </select>
+                            <select style={{width:"40%"}} name="cityid" onChange={(e)=>this.getbuttonvalu(e)}>
+                                <option selected="selected">choos city</option>
+                            {this.state.cities.map((city)=>{
+                                    return(
+                                <option value={city.id}>{city.name}</option>
+                                    )
+                                })}
+                            </select>
+                        </div>
+
                             <div>
                                 <Price_btn make_list_active={this.make_list_active}/>
                                 {this.state.opendmenue==1 && <PriceMenue sendvaluetostate={this.getbuttonvalu}/>}
@@ -150,7 +166,7 @@ class Form extends React.Component{
                             
                             <div>
                                 <RoomBtn make_list_active={this.make_list_active}/>
-                                {this.opendmenue==2 && <RoomMenu sendvaluetostate={this.getbuttonvalu}/>}
+                                {this.state.opendmenue==2 && <RoomMenu sendvaluetostate={this.getbuttonvalu}/>}
                             </div>
 
                             <div>
@@ -235,7 +251,7 @@ class Form extends React.Component{
                      title={this.props.title}  
                      gotfooter={this.props.bool}/>
 
-            <NumberBar handledata={this.getbuttonvalu} apartmentquqntity={this.state.apartments.length}/>
+            <NumberBar handledata={this.getbuttonvalu} apartmentquqntity={Math.floor(this.state.apartmentsnumber/10)}/>
             </div>
         )
     }
@@ -278,4 +294,16 @@ let filter_btn_style={
 }
 
 
+
 export default Form;
+
+
+// style={{padding: "35px 0px",
+//                                      display:"flex",
+//                                      justifyContent:"space-evenly",
+//                                      position:"absolute",
+//                                      zIndex:"999",
+//                                      background:"white",
+//                                      left:"0px",
+//                                      top:"220px",                            
+//                                      width:"107vw"}}

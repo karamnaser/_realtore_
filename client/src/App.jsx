@@ -3,6 +3,7 @@ import React from 'react';
 import logo from './logo.svg';
 import Form from './new_componenet/form/form'
 import './App.css';
+import ForgotPassword from './forgotpasswordpage/forgotpasswordpage'
 import HomePage  from './new_componenet/homePage/homepage'
 import HeaderNave from './new_componenet/header copy/header-navigation';
 import AdminPage from './new_componenet/AdminPage/adminpage';
@@ -40,6 +41,7 @@ function App() {
 
           <Route path={`/addapartment`} component={AddApartmentPage}/>
           <Route path={`/AdminPage`} component={AdminPage}/>
+          <Route path={`/ForgotPassword`} component={ForgotPassword}/>
         <Route path="/" component={HomePage}/>
     </Switch>
     </div>

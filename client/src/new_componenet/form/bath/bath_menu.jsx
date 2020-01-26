@@ -49,9 +49,8 @@ class BathMenu extends React.Component{
                 
                 
                 <div style={{width:"363px",height:"214px"
-                ,position:"absolute",zIndex:"10000",background:"white"
-                ,top:"82%",left:"36%"}} 
-                className="row flex-column shadow-sm">
+                ,position:"absolute",zIndex:"10000",background:"white"}} 
+                className="bathmenue row flex-column shadow-sm">
                 
                 
                 <div style={{background:"gray",textAlign:"left"}}>
@@ -64,7 +63,7 @@ class BathMenu extends React.Component{
                 
                 </div>
                 
-                <div className="d-flex flex-wrap m-3">
+                <div className="bathmenue d-flex flex-wrap m-3">
                 
                 {buttons}
                 
