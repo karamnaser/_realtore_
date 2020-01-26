@@ -1,0 +1,49 @@
+.shadow-div {
+    width: 100%;
+    height: 90%;
+    color: black;
+   
+}
+
+.apartments-gallary a{
+
+    text-decoration: none;
+
+}
+
+.Gallary-img {
+    width: 100%;
+    height: 76%;
+}
+
+.Gallary-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.header-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.header-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.heart-img {
+    top: 29px;
+    right: 25px;
+    width: 10%;
+}
+
+.heart-img img {
+    width: 100%;
+}
+
+#red-heart {
+    right: 2px;
+    top: 2px;
+    width: 92%;
+    opacity: 0;
+}
