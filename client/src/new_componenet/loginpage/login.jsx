@@ -2,6 +2,7 @@ import React from 'react'
 import {sendData} from '../../server/api';
 import validate,{field} from '../../validation/validation';
 import AddApartmentPage from '../addapartmentpage/addapartmentpage';
+import { Link } from 'react-router-dom';
 class LogInPage extends React.Component{
     constructor(props){
         super(props);
@@ -47,7 +48,7 @@ class LogInPage extends React.Component{
                                style={text__inpute_style} type="text" placeholder="email"/>
 
                         <input name="password" onSelect={(e)=>this.handleData(e)}  
-                               style={text__inpute_style} type="text" placeholder="password"/>
+                               style={text__inpute_style} type="password" placeholder="password"/>
 
                     </div>
 
@@ -55,16 +56,16 @@ class LogInPage extends React.Component{
 
                         <div style={popup_footer_style}>
 
-                            <button style={{border:"none",background:"white"}}>Forgot Password</button>   
+                            <Link to={'/ForgotPassword'}>Forgot Password</Link>   
 
                         </div>
 
                         <div style={log_in_div_style}>
 
                             <button onClick={()=>{sendData("login",{email:this.state.email.value,password:this.state.password.value})
-                                                .then(response=>{response.msg ?  this.props.showaddpage(): alert(response); 
-                                                
-                                            })}}
+                                                .then(response=>{alert(response.msg);this.props.showaddpage()}) 
+                                                .catch(err=>alert("one of the details is not correct"))  
+                                            }}
                                     style={logon_style}>log in</button>
 
                            

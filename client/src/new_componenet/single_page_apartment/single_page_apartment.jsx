@@ -2,18 +2,15 @@ import React from 'react'
 import GallarymenDetails from '../gallary/gallarydetails';
 import GallaryImg from '../gallary/gallary_img';
 import Heart from '../gallary/heart'
-import './apartment.css'
+import './singlepageapartmentmobilecss.css'
 import rightarrowicon from '../../icons/right-arrow.png'
 import leftarrowicon from '../../icons/left-arrow.png'
-import '../form/serachpagemobile.css'
 import {getapartments,getApartmentImgs} from '../../server/api'
 
  class SinglePageApartment extends React.Component{
     constructor(props){
-
+      
     super(props)
-
-    const pathway=window.location.pathname
 
     this.state={
     apartment: [] ,
@@ -97,13 +94,13 @@ getapartmentDiscreption(aprtment){
 
      
         
-        <div  className="apartment  position-relative w-50">
+        <div  className="apartment  mt-2  position-relative w-50">
 
               {this.state.apartment.length>0 ?
 
               <div style={{boxShadow:"0px 0px 0px 1px"}} className="shadow-div">
 
-                    {/* <GallarymenDetails header={this.state.apartmen["title"]}/> */}
+                    <GallarymenDetails header={this.state.apartment[0]["description"]}/>
 
                     <GallaryImg src={`http://localhost:5000/${this.state.apartment[0]["main_image"]}`}/>
 
@@ -115,7 +112,7 @@ getapartmentDiscreption(aprtment){
                           onMouseLeave={this.disaple_heart_on_leave.bind(this)}/>
 
 
-                    <p className="apartment-price">{this.state.apartment["price"] &&"$"+this.state.apartment["price"]}</p>
+                    <p className="apartment-price">{this.state.apartment[0]["price"] &&"$"+this.state.apartment[0]["price"]}</p>
 
 
                     

@@ -3,6 +3,7 @@ import x from '../../../images/x.png'
 import './popup.css'
 import {sendData} from '../../../server/api'
 import validate,{field} from '../../../validation/validation'
+import { Link } from 'react-router-dom'
 class PopUp extends React.Component{
     constructor(props){
         super(props);
@@ -75,7 +76,7 @@ class PopUp extends React.Component{
                                style={text__inpute_style} type="text" placeholder="email"/>
 
                         <input name="password" onSelect={(e)=>this.handleData(e)}  
-                               style={text__inpute_style} type="text" placeholder="password"/>
+                               style={text__inpute_style} type="password" placeholder="password"/>
 
                     </div>
 
@@ -83,15 +84,16 @@ class PopUp extends React.Component{
 
                         <div style={popup_footer_style}>
 
-                            <button style={{border:"none",background:"white"}}>Forgot Password</button>   
+                            <Link to={'/ForgotPassword'}>Forgot Password</Link>   
 
                         </div>
 
                         <div style={log_in_div_style}>
 
-                            <button onClick={()=>sendData("login",{email:this.state.email.value,password:this.state.password.value})
-                                                .then(response=>{response.msg ? alert(response.msg) : alert(response);
-                                                window.location.reload();})}
+                            <button onClick={()=>{sendData("login",{email:this.state.email.value,password:this.state.password.value})
+                                                .then(response=>{alert(response.msg);window.location.reload()})
+                                                .catch(err=>alert("one of the details is not correct"))
+                                                }}
                                     style={logon_style}>log in</button>
 
                            
@@ -154,7 +156,7 @@ class PopUp extends React.Component{
 
                         <input name="password" onSelect={(e)=>this.handleData(e)} 
                                onBlur={(e)=>this.inputChange(e)}
-                               style={text__inpute_style} type="text" placeholder="password"/>
+                               style={text__inpute_style} type="password" placeholder="password"/>
 
                         { this.state.password.errors.map((error, i) => (
 

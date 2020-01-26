@@ -52,11 +52,10 @@ class StatusMenu extends React.Component{
             
             
             <div style={{width:"263px",height:"444px",position:"absolute"
-            ,zIndex:"10000",background:"white"
-            ,top:"83%",left:"0%"}} className="shadow-sm">
+            ,zIndex:"10000",background:"white"}} className="status shadow-sm">
             
             <div style={{background:"gray"}} 
-            className="d-flex justify-content-between">
+            className=" d-flex justify-content-between">
             
             <p>
             

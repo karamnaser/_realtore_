@@ -43,7 +43,7 @@ class BigImgSection extends React.Component{
                         {navbar.map((iteam)=>{
                           return(
         
-                                <li><a style={{color:"black",textDecoration:"none"}} href="/">{iteam}</a></li>        
+                                <li><a style={{color:"aquamarine",textDecoration:"none"}} href="/">{iteam}</a></li>        
         
                             )
         
@@ -85,8 +85,8 @@ class BigImgSection extends React.Component{
 let paragraph_style={
 
     color:"white",
-    margin:"40px 0"
-
+    margin:"40px 0",
+    fontSize:"30px"
 }
 
 let list_style={
@@ -99,7 +99,8 @@ let list_style={
 
     margin: "20px auto",
 
-    color: "white"
+    color: "white",
+    fontSize:"20px"
 
 }
 

@@ -2,8 +2,9 @@ import React from 'react';
 
 class NumberBar extends React.Component{
     render(){
+        console.log(this.props.apartmentquqntity)
         let numberarr=[]
-        for(let i=0;i<this.props.apartmentquqntity;i++){
+        for(let i=0;i<this.props.apartmentquqntity-1;i++){
             numberarr.push(i)
         }
         return(

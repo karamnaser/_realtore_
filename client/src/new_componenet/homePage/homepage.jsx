@@ -61,7 +61,7 @@ class HomePage extends  React.Component{
         return(
             <div>
 
-                <div style={{display:"flex",justifyContent:"center"}}>
+                <div style={{display:"flex",justifyContent:"center",margin: "20px 16px"}}>
 
                     <div>
                         

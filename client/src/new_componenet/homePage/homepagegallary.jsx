@@ -2,7 +2,6 @@ import React from 'react';
 import GallarymenDetails from '../gallary/gallarydetails.jsx';
 import GallaryImg from '../gallary/gallary_img.jsx';
 import '../img.css';
-import '../paragraphs.css';
 import {Link} from "react-router-dom";
 import Heart from '../gallary/heart'
 

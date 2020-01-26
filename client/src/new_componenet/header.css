@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 28px;
     border-bottom: 1px solid gray;
 }
 #link-1{
@@ -34,5 +33,11 @@
 #header-left-side{
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 60%;
+}
+@media(min-width:768px){
+    .burgerlist{
+        width: 7%;
+        margin: auto;
+    }
 }

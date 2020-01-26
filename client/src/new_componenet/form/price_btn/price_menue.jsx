@@ -86,10 +86,6 @@ let price_menue_style={
 
     background:"white",
 
-    top:"83%",
-
-    left:"11%",
-
     textAlign:"right"
 
 }

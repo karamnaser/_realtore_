@@ -12,7 +12,7 @@ class BathBtn extends React.Component{
         
         return(
 
-        <div id="beds-menu" 
+        <div id="bath-menu" 
              className="menue" 
              style={{position:"relative"}}>
 

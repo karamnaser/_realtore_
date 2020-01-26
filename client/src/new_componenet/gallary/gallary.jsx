@@ -2,7 +2,7 @@ import React from 'react';
 import GallarymenDetails from './gallarydetails.jsx';
 import GallaryImg from './gallary_img.jsx';
 import '../img.css';
-import '../paragraphs.css';
+import './gallarymobilecss.css';
 import Heart from './heart'
 import {Link} from "react-router-dom";
 
@@ -87,7 +87,7 @@ class Gallary extends React.Component{
                                 <div style={{boxShadow:"0px 0px 0px 1px"}} className="shadow-div">
                                 
 
-                                        <GallarymenDetails header={item[this.props.title]}/>
+                                        <GallarymenDetails header={item["description"]}/>
 
                                         <GallaryImg src={`http://localhost:5000/${item["main_image"]}`}/>
 

@@ -1,0 +1,57 @@
+@media (min-width:300px){
+    #price-menu{
+        margin:10px 5px;
+        position: static !important;
+    }
+    #bath-menu{
+        margin:10px 5px;
+    }
+    .price-menue{
+        position: static !important;
+    }
+    .roommenu{
+        position: static !important;  
+        margin: 10px 0px;  
+    }
+    .bathmenue{
+        position: static !important;  
+        margin: 10px 0px;  
+    }
+    .status{
+        position: static !important; 
+        margin: 10px 0px;
+    }
+}
+@media (min-width:800px){
+    .country_city_search{
+        display: flex !important;
+        
+    }
+    #price-menu{
+        margin: 0 5px;
+        position: absolute;
+    }
+    #bath-menu{
+        margin:0px 5px;
+    }
+    .price-menue{
+        position: absolute !important;
+        top:30px;
+    }
+    .roommenu{
+        position: absolute !important;
+        margin: 0px 0px; 
+        top:30px;
+    }
+    .bathmenue{
+        position: absolute !important;
+        margin: 0px 0px;   
+        top:30px;
+    }
+    .status{
+        position: absolute !important; 
+        margin:0px 0px;
+        top:30px;
+        
+    }
+}
