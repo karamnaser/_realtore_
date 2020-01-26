@@ -40,7 +40,7 @@ class SearchBuilder{
         return this
     }
     price(price){
-        this.query+=`${!price ? '' : (this.params.push(price) ,' and p.price = ? ')}`
+        this.query+=`${!price ? '' : (this.params.push(price) ,' and p.price <= ? ')}`
         return this
     }
 
