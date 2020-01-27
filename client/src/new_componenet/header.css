@@ -33,11 +33,14 @@
 #header-left-side{
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 38%;
 }
 @media(min-width:768px){
+    .header-icon{
+        width: 70%;
+    }
     .burgerlist{
         width: 7%;
-        margin: auto;
+        margin: 9px auto;
     }
 }
