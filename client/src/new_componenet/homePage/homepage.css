@@ -1,82 +1,46 @@
-  @media only screen and (max-device-width: 600px){
-
-        .bigimg-wraper{
-
-            padding: 0px !important;
-
-            text-align: center;
-
-        }
-
-        .bigimg-nav{
-
-            width: auto !important;
-        }
-
-
-        
-
-        .homepagegallary .apartment-price{
-
-            bottom: 70px !important;
-
-        }
-
-        .apartment-price{
-
-            bottom: 76px;
-            
-        }
-
-        .homepage-statistic{
-
-            margin-bottom: 40px !important;
-
-        }
-
-        .bigadvertise{
-
-            margin-bottom: 236px !important;
-            
-        }
-
-        .bigadvertise-img{
-
-            position: absolute !important;
-
-            z-index: -1;
-
-            width: 100% !important;
-
-        }
-
-        .footerlist{
-
-            flex-direction: column !important;
-
-        }
-
-        .footerlist-iteam{
-
-            margin: 10px 0;
-
-            width: 200px;
-
-        }
-        
+  @media(min-width:300px){
+      .bigimg-wraper{
+          padding: 0px !important;
+      }
+    .bigadvertise{
+        position: relative;
+        margin: 20px 0px;
     }
-
-    @media only screen and (max-device-width: 1024px){
-
-
-        
-        .container.footerlist{
-
-            max-width:100% !important;
-
-        }
-
+    .bigadvertise-img{
+        width: 100% !important;
     }
+    .bigadvirtise-paragraph{
+        position: absolute;
+    }
+  }
+
+  @media(min-width:1024px){
+    .bigimg-wraper{
+        padding: 88px !important;
+    }
+  .bigadvertise{
+      position: static;
+      margin:0px;
+  }
+  .bigadvertise-img{
+      width: 64% !important;
+  }
+  .bigadvirtise-paragraph{
+      position: static;
+  }
+}
+@media(min-width:1044px){
+  .bigadvertise-img{
+      width: 50% !important;
+  }
+  .bigadvertise{
+    position: relative;
+    margin: 20px 0px;
+}
+  
+}
+
+  
 
     
 

@@ -85,7 +85,7 @@ class HomePageGallary extends React.Component{
 
                                         <GallarymenDetails header={iteam["title"]}/>
 
-                                        <GallaryImg src={require("../apartments/"+iteam["main_image"])}/>
+                                        <GallaryImg src={`http://localhost:5000/${iteam["main_image"]}`}/>
 
                                         {
                                             gallery_got_footer

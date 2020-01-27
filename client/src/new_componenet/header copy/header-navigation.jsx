@@ -56,11 +56,11 @@ import '../header.css'
 
                     }} className="burgerlist d-lg-none d-sm-block">
 
-                        <div style={{width:"37px",height:"4px",background:"black",margin:"10px 10px"}}></div>
+                        <div style={{width:"37px",height:"3px",background:"black",margin:"10px 10px"}}></div>
 
-                        <div style={{width:"37px",height:"4px",background:"black",margin:"10px 10px"}}></div>
+                        <div style={{width:"37px",height:"3px",background:"black",margin:"10px 10px"}}></div>
 
-                        <div style={{width:"37px",height:"4px",background:"black",margin:"10px 10px"}}></div>
+                        <div style={{width:"37px",height:"3px",background:"black",margin:"10px 10px"}}></div>
 
                         {
                         
