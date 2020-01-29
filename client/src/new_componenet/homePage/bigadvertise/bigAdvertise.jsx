@@ -1,6 +1,6 @@
 import React from 'react'
-import houseimg from '../../../images/realtor.png'
-import { reverse } from 'dns'
+import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
 
 class BigAdvertise extends React.Component{
 
@@ -13,74 +13,52 @@ class BigAdvertise extends React.Component{
             <div className="bigadvertise"
                  style={img_position}>
 
-    
-            <div className="bigadvertise-img" 
-                 style={{width:"50%"}}>
+                <iframe className="ifram col-lg-6 col-sm-12" width="560" height="500" 
+                        src="https://www.youtube.com/embed/Aa3mmPRuiZY" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+               
 
-                <img src={houseimg} width={"100%"}/>
-
-            </div>
-
-            <div className="bigadvirtise-paragraph"
+            <div className="bigadvirtise-paragraph col-lg-6 col-sm-12"
                  style={{textAlign: "left",margin:"auto 10px"}} >
 
 
                 <div>
 
-                <p>Need a home loan? Get pre-approved</p>
+                <h1>About realtor.com®</h1>
 
-                <p>Find a lender who can offer competitive mortgage rates and help you with pre-approval.</p>
-
-                </div>
-                {
-                    this.props.searchbar 
-                    
-                    ?
-
-                    <div style={{display:"flex"}}>
-        
-                        <div>
-        
-                            <input id="search-input"
-                                   style={{...input_style,width:"201px",height:"36px"}} 
-                                   type="text"/>
-        
-                        </div>
-        
-                        <div style={{width:"40px", height:"36px"}}>
-        
-                                <button style={btn_style}>
-        
-                                        search
-        
-                                </button>
-        
-                        </div>
-        
-                    </div>
-                    
-                :   
+                <p>
+                    For years, millions of home shoppers have turned to 
+                    realtor.com® to find their dream home. Operated by
+                </p>
+                <p>
+                  Move, Inc., realtor.com® offers a comprehensive 
+                  list of for-sale properties, as well as the 
+                  information and
+                </p>
+                <p>
+                tools to make informed real estate decisions.Today, 
+                more than ever,
+                realtor.com® is The Home of Home Search℠.
+                </p>
+                <p>
+                Realtor.com® also offers homeowners 
+                a bevy of useful tools and resources through the My Home℠
+                </p>
+                <p>
+                dashboard. My Home℠ dashboard allows property owners to manage their home like 
+                the important investment it is by tracking their home’s value over time, 
+                researching and managing home improvements, 
+                and scouting other similar properties in the neighborhood.
+                </p>
                 
-                    <div>
-
-                        <button style={{...btnstyle}}>Get Pre-Approved</button>
-
-                    </div>
-                }
-
+                </div>
             </div>
-            
-
         </div>
-       
-
-
         )
-
-
     }
-
-
 }
 
 let btnstyle={

@@ -5,12 +5,17 @@
     .bigadvertise{
         position: relative;
         margin: 20px 0px;
+        display: block !important;
     }
     .bigadvertise-img{
         width: 100% !important;
     }
-    .bigadvirtise-paragraph{
-        position: absolute;
+    .bigimg-nav{
+        padding: 0px;
+    }
+    .ifram{
+        width: 377px !important;
+        height: 400px !important;
     }
   }
 
@@ -21,6 +26,7 @@
   .bigadvertise{
       position: static;
       margin:0px;
+      display: flex !important;
   }
   .bigadvertise-img{
       width: 64% !important;

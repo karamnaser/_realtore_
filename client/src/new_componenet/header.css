@@ -36,8 +36,8 @@
     width: 38%;
 }
 @media(min-width:768px){
-    .header-icon{
-        width: 70%;
+    .header-icon-wraper{
+        width: 20% !important;
     }
     .burgerlist{
         width: 7%;

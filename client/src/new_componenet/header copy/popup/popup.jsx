@@ -176,7 +176,8 @@ class PopUp extends React.Component{
                                                                     lastname:this.state.userlastname.value,
                                                                     email:this.state.email.value,
                                                                     password:this.state.password.value})
-                                                                   .then(msg=>alert(msg.msg))} 
+                                                                   .then(msg=>alert(msg.msg))
+                                                                    .catch(err=>alert("faild to send data"))} 
                                     style={{...logon_style,background:"blue"}}>Sign-Up</button>   
 
                         </div>

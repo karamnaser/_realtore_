@@ -5,7 +5,7 @@ import {getapartments,changeStatus,getapartmentnumbers} from '../../server/api';
 import LogInPage from '../loginpage/login'
 import Cookies from 'js-cookie';
 import NumberBar from '../numberbar/numbersbar'
-
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 
 class AdminPage extends React.Component{
@@ -93,7 +93,7 @@ class AdminPage extends React.Component{
             {this.state.apartmens.map((apartment,i)=>{
                 return(
                 <>
-                <div className="lg-col-6 sm-col-12">
+                <div className="col-lg-6 col-sm-12">
                     <div className="m-3">
                 <div className="mt-3" style={img_wraper_style}>
                 <div className="mt-3">
