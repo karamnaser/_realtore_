@@ -16,7 +16,7 @@ class BigImgSection extends React.Component{
 
     render(){
 
-        let navbar=["buy","rent","just sold","home value"]
+        let navbar=["sale","rent","both"]
 
         return(
 
@@ -42,16 +42,10 @@ class BigImgSection extends React.Component{
 
                         {navbar.map((iteam)=>{
                           return(
-        
-                                <li><a style={{color:"aquamarine",textDecoration:"none"}} href="/">{iteam}</a></li>        
-        
+                                <li><button name="salestatuse" value={iteam} onClick={(e)=>this.props.handleData(e)} style={{color:"aquamarine",textDecoration:"none",border:"0px",background:"none"}}>{iteam}</button></li>        
                             )
-        
                         })}
-
-
                     </ul>
-        
                 </div>
         
                 <div style={{display:"flex",margin:"100px 0",justifyContent:"center"}}

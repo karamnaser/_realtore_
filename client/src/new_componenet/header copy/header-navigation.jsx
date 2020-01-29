@@ -81,7 +81,7 @@ import '../header.css'
 
                     <div id="header-left-side">
 
-                        <div>
+                        <div className="header-icon-wraper">
 
                             <HeaderIcon onmousehover={donothing}  icon={icon}/>
 

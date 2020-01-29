@@ -8,6 +8,7 @@ import HomePage  from './new_componenet/homePage/homepage'
 import HeaderNave from './new_componenet/header copy/header-navigation';
 import AdminPage from './new_componenet/AdminPage/adminpage';
 import AddApartmentPage from './new_componenet/addapartmentpage/addapartmentpage'
+import RestoreUserPasswordPage from './restoreuserpage/restoreuserpage'
 import  { BrowserRouter as Router
   ,Switch
   ,Route
@@ -42,6 +43,7 @@ function App() {
           <Route path={`/addapartment`} component={AddApartmentPage}/>
           <Route path={`/AdminPage`} component={AdminPage}/>
           <Route path={`/ForgotPassword`} component={ForgotPassword}/>
+          <Route path={`/restoreuser`} component={RestoreUserPasswordPage}/>
         <Route path="/" component={HomePage}/>
     </Switch>
     </div>

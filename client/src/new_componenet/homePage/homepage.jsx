@@ -13,8 +13,10 @@ class HomePage extends  React.Component{
         super(props);
 
         this.state={
-
-            iteam:[]
+            iteam:[],
+            salestatuse:"",
+            searchparams:{},
+            query:""
 
         }
 
@@ -22,14 +24,31 @@ class HomePage extends  React.Component{
 
      componentDidMount(){
 
-        getapartments().then(apartment=>{
+        getapartments(this.state.query).then(apartment=>{
             this.setState({
                 iteam:apartment
             })
         });
 
      }
+
+     handleData({target:{name,value}},state){
+         console.log("hadledata");
+         console.log(state);
+        let query="";
+        
+        this.state.searchparams[name]=value
+        for(let searchparam in this.state.searchparams){    
+            query+=searchparam+"="+this.state.searchparams[searchparam]+"&"
+        console.log("getbuttonvalue",query)
+    }
+    getapartments(query).then(apartments_arr=>{
+        this.setState({iteam:apartments_arr},()=>{
+            console.log("searchparams",window.location.search)
+        })
+    }).catch(error=>console.log(error));
     
+     }
 
     render(){
        
@@ -46,13 +65,13 @@ class HomePage extends  React.Component{
 
                     <div>
 
-                        <button style={btnstyle}>Get Pre-Approved</button>
+                        <button style={btnstyle} disabled>Get Pre-Approved</button>
 
                     </div>
 
                 </div>
 
-                <BigImgSection/>
+                <BigImgSection handleData={(e)=>this.handleData(e,this.state)}/>
 
                 <div className="container">
 
@@ -60,10 +79,9 @@ class HomePage extends  React.Component{
                                      gotfooter={true}/>
 
                 </div>
-                
-                < BigAdvertise imgrevers={false}/>
-                < BigAdvertise searchbar={true} imgrevers={true}/>
 
+                < BigAdvertise imgrevers={false}/>
+                
                 <div>
 
 

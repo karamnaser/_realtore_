@@ -57,19 +57,6 @@ class HeaderRightside extends React.Component{
                 <div onMouseLeave={()=>this.disable_div()} 
                      className="right-side-links">
 
-                        <HeaderIcon onmousehover={this.show_div} 
-                                    icon={iphonicon} id="iphone-hiddin-box-id"/>
-
-                        {
-
-                            this.state.show_box!=-1
-
-                            &&
-
-                            <IphoneHiddinBox/>
-                            
-                        }
-
                          {leftsidearr}
 
                 </div>
