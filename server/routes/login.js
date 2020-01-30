@@ -5,10 +5,14 @@ const connector = require('../api/configeration');
 
 /* GET users listing. */
 router.post('/',function (req, res, next) {
-  const encPassword = crypto.pbkdf2Sync(req.body.password, 'realtore', 10000, 64, 'sha512');
+  console.log(req.body)
+  const encPassword = crypto.pbkdf2Sync(req.body.password, 'realtore', 10000, 64, 'sha512').toString('hex');
+  const email = req.body.email;
+  console.log(email,encPassword)
   connector.query('SELECT * FROM users join roles on users.role_id = roles.id where email = ? and password = ?', 
-      [req.body.email, encPassword.toString('hex')],
+      [email, encPassword],
     (error, result, fields) => {
+      console.log(result)
       if (error) throw error;
       if (result.length > 0) {
         const user = result[0];

@@ -1,7 +1,15 @@
 var express = require('express');
-const crypto = require('crypto');
 var router = express.Router();
-function generatePassword() {
+const crypto=require('crypto');
+const { checkuserinfo } = require('../middlewares/auth');
+const connector = require('../api/configeration');
+const forgotPasswordApi = require('../api/forgotpassword');
+let i=10000;
+let len=64;
+let digest='sha512';
+let salt='realtore';
+
+function generateToken() {
   var length = 8,
       charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
       retVal = "";
@@ -11,21 +19,23 @@ function generatePassword() {
   return retVal;
 }
 
-/* GET users listing. */
+/* Post users listing. */
+
 router.post('/',function (req, res, next) {
-  console.log(req.body)
-    // const encPassword = crypto.pbkdf2Sync(req.body.password, 'realtore', 10000, 64, 'sha512');
-    const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey("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");
-    const msg = {
-      to:req.body.email,
-      from: 'realtore@example.com',
-      subject:"password",
-      text: "hello word",
-      html: `<strong>${generatePassword()}</strong>`,
-    };
-    sgMail.send(msg);
-    res.status(200).json(`password was sent to ${req.body.email}`)
+  let token=generateToken();
+  forgotPasswordApi.sendMail(connector, token, res, req);
 });
+
+router.post('/restorepassword',checkuserinfo,(req,res,next)=>{
+  req.body.password= crypto.pbkdf2(req.body.password,salt,i,len,digest,(error,key)=>{
+    if(error) throw error;
+    connector.query(`Update users set password=? where email=?` 
+    ,[key.toString('hex'),req.body.email],
+    (error,result,field)=>{
+        if(error) throw error;
+        res.status(200).json({msg:"sucssefully updtaed"});
+    })
+  })
+})
 
 module.exports = router;
