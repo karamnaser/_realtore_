@@ -46,7 +46,7 @@ class SearchBuilder{
 
     build(){
         this.query+=` limit ${(this.page-1)*this.size},${this.size}`
-        console.log(this.query)
+        console.log("query is"+ this.query)
         return this.query;
     }
 }

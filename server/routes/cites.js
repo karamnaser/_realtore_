@@ -1,16 +1,12 @@
 var express = require('express');
 var router = express.Router();
-
-const connector = require('../api/configeration');
+let {getCities} = require('../api/citieapi');
 
 /* GET users listing. */
 
 router.get('/', function(req, res, next) {
-  connector.query("select * from cities where country_id = ?",[req.query.countryid],
-  (error,result,feild)=>{
-      if(error) throw error;
-      res.status(200).json(result)
-  })
+  getCities(req.query.countryid).then(cities=>res.status(200).json(cities))
+  .catch(err=>res.status(500).json("faild to load data"))
 });
 
 module.exports = router;
